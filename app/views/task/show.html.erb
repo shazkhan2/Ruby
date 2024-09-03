@@ -19,10 +19,8 @@
 <div class= "crud">
 <ul>
   <li><%= link_to "Edit", edit_task_path(@task) %></li>
-  <li><%= link_to "Destroy", task_path(@task), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></li>
+  <li><%= button_to 'Delete', task_path(@task) , method: :delete , data:{ confirm: "Do you want to Delete"} %> 
+
     <li>
     <%= link_to "Back", tasks_path %>
     </li>
