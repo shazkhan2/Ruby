@@ -1,0 +1,32 @@
+<div class="container">
+
+<div> class="details"
+<h1><%= @task.title %></h1>
+
+<p> <strong>Description: </strong>
+<%= @task.description %>
+</p>
+
+<p> <strong>Due Date: </strong>
+<%= @task.due_date %>
+</p>
+
+<p> <strong>Status: </strong>
+<%= @task.status.present? ?@task.status.humanize: "unknown" %>
+</p>
+</div>
+
+<div class= "crud">
+<ul>
+  <li><%= link_to "Edit", edit_task_path(@task) %></li>
+  <li><%= link_to "Destroy", task_path(@task), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+    <li>
+    <%= link_to "Back", tasks_path %>
+    </li>
+</ul>
+</div>
+</div>
+
