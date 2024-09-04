@@ -1,7 +1,6 @@
 <div class="container">
-
-  <h2><%= @task.new_record? ? "Create a task:" : "Edit task"</h2>
-  <%= form_with model: [current_user, @task] do |form| %>
+  <h2><%= @task.new_record? ? "Create a task:" : "Edit task:" %></h2> 
+<%= form_with model: [current_user, @task] do |form| %>
     <div class="form_fields">
       <p>
         <%= form.label :title %><br>
@@ -23,7 +22,7 @@
     
     <div class="submit">
       <p>
-        <%= form.submit @task.new_record? ?"Create Task" : "Update Task" %>
+<%= form.submit @task.new_record? ? "Create Task" : "Update Task" %>
       </p>
     </div>
   <% end %>
