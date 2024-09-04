@@ -1,11 +1,18 @@
-<h1>Tasks List </h1>
+<h1>Tasks List from views-tasks-index </h1>
 
 <ul>
 <% @tasks.each do |task| %>
-  <li><%= task.title %></li>
-  <li><%= task.description %></li>
-  <li><%= task.due_date %></li>
-  <li><%= task.status %></li>
+  <li>
+    <strong>Title:</strong> <%= task.title %><br>
+    <strong>Description:</strong> <%= task.description %><br>
+    <strong>Due Date:</strong> <%= task.due_date %><br>
+    <strong>Status:</strong> <%= task.status.present? ? task.status.humanize : "unknown" %><br>
+    
+    <%= link_to 'Edit', edit_user_task_path(current_user, task) %> |
+    
+    <%= link_to 'Delete', user_task_path(current_user, task), method: :delete, data: { confirm: 'Are you sure you want to delete this task?' } %>
+  </li>
 <% end %>
 </ul>
+
 <%= link_to 'New Task', new_user_task_path(current_user) %>
