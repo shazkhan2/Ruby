@@ -1,0 +1,8 @@
+
+
+<div class="container">
+<h2><%=@task.new_record? ? "Create a task:" : "Edit task:" %></h2>
+<%= form_with model: [current_user, @task] do |form| %>
+<%= render partial: 'form', locals: {form: form} %>
+<% end %> 
+</div>
