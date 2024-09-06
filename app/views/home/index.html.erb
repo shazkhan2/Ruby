@@ -1,22 +1,4 @@
-<% if user_signed_in? %>
-  <h1>Welcome <%= current_user.email %> Here is your tasks List </h1>
 
-  <ul>
-    <% @tasks.each do |task| %>
-      <li>
-        <strong>Title:</strong> <%= task.title %><br>
-        <strong>Description:</strong> <%= task.description %><br>
-        <strong>Due Date:</strong> <%= task.due_date %><br>
-        <strong>Status:</strong> <%= task.status.present? ? task.status.humanize : "unknown" %><br>
-        
-        <%= link_to 'Edit', edit_user_task_path(current_user, task) %> |
-<%= button_to 'Delete', user_task_path(current_user, task), method: :delete, data: { confirm: 'Are you sure you want to delete this task?' }, class: 'delete-task' %>
-      </li>
-    <% end %>
-  </ul>
-
-  <%= link_to 'New Task', new_user_task_path(current_user) %>
-<% else %>
   <h1>Welcome to the world's most unique application</h1>
   <p>
     This app has been created no less than a 100 million times before, and you are one of the lucky few millions who get to try it.
@@ -25,4 +7,3 @@
   <p>or <br>
   <%= link_to 'sign up', new_user_registration_path %> </p>
   
-<% end %>
