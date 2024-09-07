@@ -1,0 +1,23 @@
+<div class="container">
+<nav>
+<img class="logo" >
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="lightblue" />
+  <text x="25" y="30" font-family="Verdana" font-size="10" text-anchor="middle" fill="black">Logo</text>
+</svg>
+</img>
+
+  <ul>
+  <% if user_signed_in? %>
+  <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: "sign-out-button" %>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <% else %>
+  <li><%= link_to 'Home', '#' %></li>
+  <li><%= link_to 'About Us', '#' %></li>
+  <li><%= link_to 'Contact', '#' %></li>
+  <li><%= link_to 'Our Story', '#' %></li>
+ <% end %>
+  </ul>
+</nav>
+</div>
