@@ -1,3 +1,10 @@
+body {
+  max-width: 1440px;
+  margin: 0 auto;
+  background-color: rgb(249, 244, 244);
+  padding: 4rem 10rem; 
+}
+
 .container {
   background-color: #666666;
   padding: 1rem 1rem;
@@ -10,13 +17,19 @@ nav {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  width:100%;
+  box-sizing: border-box;
+  padding-right: 4rem;
 }
 
- ul {
+ nav ul {
+  display: flex;
   list-style: none;
   display: flex;
   gap: 10px;
   flex-grow: 1;
+  justify-content: flex-end;
+  flex-wrap: wrap;
 
 }
 nav ul li {
@@ -72,5 +85,49 @@ nav ul li a {
     text-align: center;
 
   }
-  
-  
+  a,
+button {
+  text-decoration: none;
+  color: var(--GrayishViolet);
+  font-weight: bold;
+  font-size: 1rem;
+}
+a:hover {
+  color: var(--VeryDarkBlue);
+}
+
+p {
+  line-height: 1.6;
+  color: var(--GrayishViolet);
+  margin: 0.5rem 0;
+}
+ul,
+li {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px;
+}
+@media screen and (max-width: 768px) {
+  nav {
+    flex-direction: column; 
+    align-items: center; 
+  }
+
+  nav ul {
+    justify-content: center; 
+  }
+
+  .sign-link {
+    flex-direction: column; 
+    gap: 10px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .sign-link a {
+    width: 100%; 
+    margin-bottom: 10px; 
+    flex-direction: column; 
+    align-items: center; 
+  }
+}
