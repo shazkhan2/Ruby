@@ -13,6 +13,8 @@ ul {
     text-decoration: none;
     display: inline-flex;
     margin-right: 10px;
+    font-weight: normal;
+    align-items: center;
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -20,8 +22,12 @@ ul {
 }
 .tasks, .task_view {
     display: flex;
-    justify-content: center; 
+    justify-content: flex-start; 
     align-items: center; 
+    margin-left: 0%;
+}
+.tasks {
+    margin-left: 40px;
 }
 .new_task {
     width: 100px;
@@ -35,6 +41,7 @@ ul {
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
+    
 
 }
 .delete-button {
