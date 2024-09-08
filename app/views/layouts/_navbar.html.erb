@@ -10,8 +10,8 @@
   <ul>
   <% if user_signed_in? %>
   <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: "sign-out-button" %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <p id="notice" class="notice"><%= notice %></p>
+  <p id="alert" class="alert"><%= alert %></p>
   <% else %>
   <li><%= link_to 'Home', '#' %></li>
   <li><%= link_to 'About Us', '#' %></li>

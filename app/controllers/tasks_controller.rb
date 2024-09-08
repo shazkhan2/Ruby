@@ -15,7 +15,7 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.build(task_params)
     if @task.save
-      redirect_to user_task_path(current_user, @task), notice: 'Task was successfully created.'
+      redirect_to user_tasks_path(current_user, @task), notice: 'Task was successfully created.'
     else
       render 'form'  
     end
