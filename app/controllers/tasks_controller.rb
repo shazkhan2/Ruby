@@ -28,7 +28,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to user_task_path(current_user, @task), notice: 'Task was successfully updated.'
+      redirect_to user_tasks_path(current_user, @task), notice: 'Task was successfully updated.'
     else
       render 'form' 
     end
