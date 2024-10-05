@@ -4,8 +4,12 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
+    if current_user.admin?
+      @tasks = Task.all
+    else
     @tasks = current_user.tasks
   end
+end
 
   def new
     @task = current_user.tasks.build
