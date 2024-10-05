@@ -50,8 +50,12 @@ end
   private
 
   def set_task
+    if current_user.admin?
+      @task = Task.find(params[:id])
+    else
     @task = current_user.tasks.find(params[:id])
   end
+end
 
   def task_params
     params.require(:task).permit(:title, :description, :due_date, :status)
