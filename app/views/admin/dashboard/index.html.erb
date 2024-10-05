@@ -43,11 +43,8 @@
         <td><%= task.description %></td>
         <td><%= task.user.email if task.user %></td>
         <td>
-        <% if task.user %>
         <%= button_to 'Delete', user_task_path(task.user, task), method: :delete, class: 'delete-button', data: { confirm: 'Are you sure you want to delete this task?' } %>
-      <% else %>
-        <p>No user assigned</p>
-      <% end %> </td>
+        </td>
       </tr>
     <% end %>
   </tbody>
