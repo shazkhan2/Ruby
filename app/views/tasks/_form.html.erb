@@ -15,6 +15,7 @@
     <%= form.label :status %><br>
     <%= form.select :status, Task.statuses.keys.map { |status| [status.humanize, status] }, selected: @task.status || "pending" %>
   </p>
+  
 </div>
 
 <div class="submit">

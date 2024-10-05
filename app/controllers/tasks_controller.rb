@@ -17,31 +17,38 @@ class TasksController < ApplicationController
 end
 
   def new
-    @task = current_user.tasks.build
+    @task = Task.new
     render 'form'  
   end
 
-  def create
-    @task = current_user.tasks.build(task_params)
-    if @task.save
-      redirect_to user_tasks_path(current_user), notice: 'Task was successfully created.'
+ 
+  
+def create
+  @task = Task.new(task_params)
+  if @task.save
+    redirect_to user_tasks_path(@task.user), notice: "Task was successfully created."
     else
-      render 'form'  
+      render "form"
     end
   end
-  
+
+
 
   def edit
     render 'form'  
   end
 
+ 
+
   def update
     if @task.update(task_params)
-      redirect_to user_tasks_path(current_user), notice: 'Task was successfully updated.'
+      redirect_to user_tasks_path(@task.user), notice: "Task was successfully updated."
     else
-      render 'form' 
+      render "form"
     end
   end
+
+  
 
   def show
   end
@@ -67,6 +74,6 @@ def set_user
 end
 
   def task_params
-    params.require(:task).permit(:title, :description, :due_date, :status)
+    params.require(:task).permit(:title, :description, :due_date, :status, :user_id)
   end
 end
