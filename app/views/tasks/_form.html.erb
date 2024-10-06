@@ -9,12 +9,16 @@
   </p>
   <p>
     <%= form.label :due_date %><br>
-    <%= form.text_field :due_date %>
+    <%= form.date_field :due_date %>
   </p>
   <p>
     <%= form.label :status %><br>
     <%= form.select :status, Task.statuses.keys.map { |status| [status.humanize, status] }, selected: @task.status || "pending" %>
   </p>
+  <p>
+  <%= form.label :user_id, "Assign To" %> <br>
+  <%= form.collection_select :user_id, User.all, :id, :email, include_blank: true %>
+    </p>
 </div>
 
 <div class="submit">
