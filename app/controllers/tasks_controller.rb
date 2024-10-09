@@ -2,19 +2,12 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :set_user
+  before_action :set_user, only: [:index, :create]
 
-  def index
-    if current_user.admin?
-      if @user
-        @tasks = @user.tasks
-      else
-      @tasks = Task.all
-      end
-    else
-    @tasks = current_user.tasks
-  end
+def index
+  @tasks = Task.fetch_tasks(current_user, @user)
 end
+
 
   def new
     @task = Task.new
@@ -32,23 +25,17 @@ def create
     end
   end
 
-
-
   def edit
     render 'form'  
   end
 
- 
-
-  def update
+   def update
     if @task.update(task_params)
       redirect_to user_tasks_path(@task.user), notice: "Task was successfully updated."
     else
       render "form"
     end
   end
-
-  
 
   def show
   end
@@ -60,13 +47,13 @@ def create
 
   private
 
-  def set_task
-    if current_user.admin?
-      @task = Task.find(params[:id])
-    else
-    @task = current_user.tasks.find(params[:id])
+def set_task
+  @task = Task.find_by(id:params[:id])
+  unless @task && (current_user.admin? || @task.user == current_user)
+    redirect_to tasks_path, alert: "You are not authorized to view this task."
   end
 end
+
 
 def set_user
   @user = User.find(params[:user_id]) if params[:user_id]
